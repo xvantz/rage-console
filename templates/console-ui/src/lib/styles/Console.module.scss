@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
+
+body {
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.console {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 50vh;
+  background-color: rgba(0, 0, 0, 50%);
+  color: #FFF;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 1000000;
+  font-family: "Montserrat", sans-serif;
+
+  .message {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 0.1vh solid #5A5A5A;
+    padding: 0.5vh;
+    font-size: 1.2vh;
+    font-weight: 600;
+
+    .rightBlock {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      width: 10vh;
+      flex-shrink: 0;
+
+      .messageCount {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 2.5vh;
+        height: 2.5vh;
+        padding: 0 0.5vh;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 1vh;
+        margin-right: 1vh;
+        font-size: 1.2vh;
+        font-weight: 500;
+        color: #FFF;
+        flex-shrink: 0;
+      }
+
+      .copyIcon {
+        background-image: url("./images/copy.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        width: 3vh;
+        height: 3vh;
+        cursor: pointer;
+        background-color: transparent;
+        appearance: none;
+        border: none;
+        margin-left: 1vh;
+      }
+    }
+
+    .messageContain {
+      display: flex;
+      align-items: center;
+      margin-right: 1vh;
+
+      .messageBlockColor {
+        width: 1vh;
+        min-height: 4vh;
+        margin-right: 1vh;
+        flex-shrink: 0;
+
+        &.UI {
+          background-color: #19FEC7;
+        }
+
+        &.Client {
+          background-color: #37E733;
+        }
+
+        &.Server {
+          background-color: #0c54a7;
+        }
+      }
+
+      .messageTimestamp {
+        width: 16vh;
+        flex-shrink: 0;
+      }
+
+      .messageBlock {
+        width: 100vh;
+        font-size: 1.3vh;
+      }
+    }
+  }
+}
+
+.icons {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  height: 4vh;
+  background-color: transparent;
+  padding-right: 5px;
+  z-index: 1000000;
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 10%);
+    width: 5vh;
+    height: 5vh;
+    border-radius: 0.5vh;
+    border: 1px solid white;
+    cursor: pointer;
+    margin-left: 1vh;
+
+    .binIcon {
+      background-image: url("./images/bin.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      width: 3vh;
+      height: 3vh;
+      appearance: none;
+      border: none;
+    }
+
+    .arrowDownIcon {
+      background-image: url("./images/arrowDown.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      width: 3vh;
+      height: 3vh;
+      appearance: none;
+      border: none;
+    }
+  }
+}

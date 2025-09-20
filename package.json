@@ -1,0 +1,52 @@
+{
+  "name": "@xvantz/rage-console",
+  "version": "0.1.0",
+  "description": "Единый логгер для RAGE MP server/client и CEF",
+  "author": "xvantz",
+  "license": "Elastic License 2.0",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "ui-static"
+  ],
+  "bin": {
+    "rage-console": "dist/cli.cjs"
+  },
+  "scripts": {
+    "build": "rimraf dist && tsup && cd templates/console-ui && npm run build"
+  },
+  "devDependencies": {
+    "@ragempcommunity/types-cef": "^2.1.8",
+    "@ragempcommunity/types-client": "^2.1.8",
+    "@ragempcommunity/types-server": "^2.1.9",
+    "@types/node": "^24.4.0",
+    "rimraf": "^6.0.1",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.2"
+  },
+  "private": true,
+  "dependencies": {
+    "commander": "^14.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your/repo.git"
+  },
+  "keywords": [
+    "rage-mp",
+    "logger",
+    "cef",
+    "client",
+    "server",
+    "typescript"
+  ]
+}

@@ -1,0 +1,40 @@
+Elastic License 2.0 (ELv2)
+
+Copyright (c) 2025–Present xvantz
+
+This Elastic License 2.0 is the license for the @xvantz/rage-console codebase and all included files in this repository and its distributed packages (the "Software").
+
+Acceptance
+By using, copying, modifying, or distributing the Software, you agree to the terms and conditions of this Elastic License 2.0.
+
+Grant of License
+Subject to the terms, conditions, and limitations set forth herein, Elastic hereby grants you a non-exclusive, non-transferable, royalty-free, worldwide license to use, copy, distribute, make available, and prepare derivative works of the Software.
+
+Limitations
+You may not provide the Software to third parties as a hosted or managed service, where the service provides users with access to any substantial set of the features or functionality of the Software.
+You may not circumvent or remove any license key functionality or other technical protection measures in the Software.
+Any distribution of the Software, or derivative works thereof, must be under this Elastic License 2.0.
+
+Patent Grant
+Subject to the terms and conditions of this License, each contributor hereby grants to you a perpetual, worldwide, non-exclusive, no-charge, royalty-free, irrevocable (except as stated in this section) patent license to make, have made, use, offer to sell, sell, import, and otherwise transfer the Software, where such license applies only to those patent claims licensable by such contributor that are necessarily infringed by their contribution(s) alone or by combination of their contribution(s) with the Software to which such contribution(s) was submitted. If you institute patent litigation against any entity (including a cross-claim or counterclaim in a lawsuit) alleging that the Software or a contribution incorporated within the Software constitutes direct or contributory patent infringement, then any patent licenses granted to you under this License for the Software shall terminate as of the date such litigation is filed.
+
+Notice
+You must include a copy of this Elastic License 2.0 with any copy of the Software you distribute or make available, and you must retain all copyright, patent, trademark, and attribution notices.
+
+Trademarks
+This License does not grant permission to use the trade names, trademarks, service marks, or product names of Elastic or any contributor, except as required for reasonable and customary use in describing the origin of the Software and reproducing the content of the NOTICE file.
+
+Disclaimer of Warranty
+THE SOFTWARE IS PROVIDED "AS IS" AND WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT. IN NO EVENT WILL ANY COPYRIGHT HOLDER OR LICENSED PARTY BE LIABLE FOR ANY DAMAGES OR OTHER LIABILITY, WHETHER IN CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Limitation of Liability
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT WILL ANY COPYRIGHT HOLDER OR LICENSED PARTY BE LIABLE FOR ANY SPECIAL, INCIDENTAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE DAMAGES, OR FOR ANY LOSS OF PROFITS, REVENUE, DATA, OR USE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+Termination
+If you breach the terms of this License, your rights under this License will terminate automatically. Upon any termination, you must cease all use, reproduction, modification, and distribution of the Software and destroy all copies in your possession or control. Sections that by their nature should survive termination will survive.
+
+Severability
+If any provision of this License is held to be unenforceable, such provision shall be reformed only to the extent necessary to make it enforceable, and the remaining provisions will remain in full force and effect.
+
+Contact
+For questions regarding licensing or to obtain additional permissions, contact: xvantz@gmail.com
