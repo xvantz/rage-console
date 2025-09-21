@@ -18,9 +18,9 @@ npm install @xvantz/rage-console
 
 ## Quick start (library)
 ```ts
-import CustomConsole, { ConsolePlatform } from '@xvantz/rage-console';
+import CustomConsole from '@xvantz/rage-console';
 
-const log = new CustomConsole('MyFeature', ConsolePlatform.Client);
+const log = new CustomConsole('MyFeature', 46);
 log.info('Hello from client!');
 log.warn({ data: 123 });
 log.error('Something went wrong');
