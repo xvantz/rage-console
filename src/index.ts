@@ -6,7 +6,6 @@ export class CustomConsole {
 	private static _sharedStopLog: boolean = false;
 	private static _sharedKeyView: number = 46;
 	private static _sharedLogBuffer: Array<{
-		type: ConsoleLogType;
 		message: string;
 		platform: ConsolePlatform;
 		format: MessageFormat;
@@ -52,7 +51,7 @@ export class CustomConsole {
 
 		logsToFlush.forEach(log => {
 			try {
-				CustomConsole._sharedConsoleBrowser!.call("addCustomConsoleLog", log.type, log.platform, log.message, log.format);
+				CustomConsole._sharedConsoleBrowser!.call("addCustomConsoleLog", log.platform, log.message, log.format);
 			} catch (error) {
 				mp.console.logError('Error flushing log buffer');
 				CustomConsole._sharedLogBuffer.push(log);
@@ -72,16 +71,16 @@ export class CustomConsole {
 		}
 	}
 
-	private static pushSharedConsoleLog(type: ConsoleLogType, message: string, platform: ConsolePlatform, formatType: MessageFormat): void {
+	private static pushSharedConsoleLog(message: string, platform: ConsolePlatform, formatType: MessageFormat): void {
 		if (CustomConsole._sharedConsoleBrowser && !CustomConsole._sharedStopLog) {
 			try {
-				CustomConsole._sharedConsoleBrowser.call("addCustomConsoleLog", type, platform, message, formatType);
+				CustomConsole._sharedConsoleBrowser.call("addCustomConsoleLog", platform, message, formatType);
 			} catch (error) {
 				mp.console.logError('Failed to call browser method');
-				CustomConsole._sharedLogBuffer.push({type, message, platform, format: formatType});
+				CustomConsole._sharedLogBuffer.push({message, platform, format: formatType});
 			}
 		} else {
-			CustomConsole._sharedLogBuffer.push({type, message, platform, format: formatType});
+			CustomConsole._sharedLogBuffer.push({message, platform, format: formatType});
 		}
 	}
 
@@ -108,20 +107,21 @@ export class CustomConsole {
 	private platformCallConsole(type: ConsoleLogType, message: any): void {
 		const formatType = this.getMessageType(message);
 		const mesString = this.messageToString(message, formatType);
-		const prefixedMessage = `[${this._prefix}] ${mesString}`;
+    const typeLabel = this.getTypeLabel(type);
+		const prefixedMessage = `${typeLabel}${this._prefix === "" ? "" : `[${this._prefix}]`} ${mesString}`;
 
 		try {
 			switch (this._platform) {
 				case ConsolePlatform.UI: {
-					mp.events.call("addCustomConsoleLogToClient", type, prefixedMessage, this._platform, formatType);
+					mp.events.call("addCustomConsoleLogToClient", prefixedMessage, this._platform, formatType);
 					break;
 				}
 				case ConsolePlatform.Client: {
-					CustomConsole.pushSharedConsoleLog(type, prefixedMessage, this._platform, formatType);
+					CustomConsole.pushSharedConsoleLog(prefixedMessage, this._platform, formatType);
 					break;
 				}
 				case ConsolePlatform.Server: {
-					mp.players.call("addCustomConsoleLogToClient", [type, prefixedMessage, this._platform, formatType]);
+					mp.players.call("addCustomConsoleLogToClient", [prefixedMessage, this._platform, formatType]);
 					break;
 				}
 				case ConsolePlatform.Local: {
@@ -146,6 +146,16 @@ export class CustomConsole {
 			console.log(`[${this._prefix}]`, message);
 		}
 	}
+
+  private getTypeLabel(type: ConsoleLogType): string {
+    switch (type) {
+      case ConsoleLogType.error: return "[ERROR] ";
+      case ConsoleLogType.warn:  return "[WARN] ";
+      case ConsoleLogType.info:  return "[INFO] ";
+      case ConsoleLogType.log:
+      default:                   return "[LOG] ";
+    }
+  }
 
 	private getMessageType(message: any): MessageFormat {
 		if (typeof message === 'undefined') return MessageFormat.undefined;

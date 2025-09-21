@@ -9,10 +9,8 @@ class ConsoleStoreManager {
   constructor() {
     setInterval(this.flushMessages.bind(this), 1000);
 				if (mp.events) {
-					mp.events.add({
-						"setViewCustomConsole": this.updateToggleView.bind(this),
-						"addCustomConsoleLog": this.addMessage.bind(this)
-					});
+          mp.events.add("setViewCustomConsole", this.updateToggleView.bind(this));
+          mp.events.add("addCustomConsoleLog", this.addMessage.bind(this));
 				}
   }
 
