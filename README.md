@@ -48,6 +48,21 @@ package://interface/customConsole/index.html
 ```
 which the library uses by default for the shared browser console.
 
+### Important: create the console after your main browser
+- RAGE:MP layers CEF browsers by creation order. If you create the console first and then create your app's main Browser, the console UI will be rendered underneath the main browser and will not be visible.
+- Therefore, instantiate the console after your main Browser is created (or recreate it after your main Browser).
+
+Example (client):
+```js
+// Create your main UI first
+const main = new Browser('package://myui/index.html');
+
+// Then create/use the console
+import CustomConsole from '@xvantz/rage-console';
+const log = new CustomConsole('MyFeature');
+log.info('Console is on top now');
+``` 
+
 ## Scripts
 - Build the package (dist + UI build for template):
 ```
