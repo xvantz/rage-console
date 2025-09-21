@@ -55,7 +55,7 @@ which the library uses by default for the shared browser console.
 Example (client):
 ```js
 // Create your main UI first
-const main = new Browser('package://myui/index.html');
+const main = new mp.browser.new('package://myui/index.html');
 
 // Then create/use the console
 import CustomConsole from '@xvantz/rage-console';
