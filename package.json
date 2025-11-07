@@ -1,6 +1,6 @@
 {
   "name": "@xvantz/rage-console",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Единый логгер для RAGE MP server/client и CEF",
   "author": "xvantz",
   "license": "Elastic License 2.0",
