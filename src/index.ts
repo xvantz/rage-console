@@ -11,6 +11,7 @@ export class CustomConsole {
 		format: MessageFormat;
 	}> = [];
 	private static _instanceCount: number = 0;
+	private _nativeConsole: Console | null = null;
 
 	private readonly _platform: ConsolePlatform;
 	private readonly _prefix: string;
@@ -18,6 +19,7 @@ export class CustomConsole {
 
 	constructor(prefix: string = '', keyView?: number) {
 		this._platform = this.detectPlatform();
+		if (this._platform === ConsolePlatform.Local) this._nativeConsole = console;
 		this._prefix = prefix;
 		CustomConsole._instanceCount++;
 
@@ -127,16 +129,16 @@ export class CustomConsole {
 				case ConsolePlatform.Local: {
 					switch (type) {
 						case ConsoleLogType.warn:
-							console.warn(prefixedMessage);
+							this._nativeConsole?.warn(prefixedMessage);
 							break;
 						case ConsoleLogType.error:
-							console.error(prefixedMessage);
+							this._nativeConsole?.error(prefixedMessage);
 							break;
 						case ConsoleLogType.info:
-							console.info(prefixedMessage);
+							this._nativeConsole?.info(prefixedMessage);
 							break;
 						default:
-							console.log(prefixedMessage);
+							this._nativeConsole?.log(prefixedMessage);
 					}
 					break;
 				}
