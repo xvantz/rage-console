@@ -1,6 +1,6 @@
 {
   "name": "@xvantz/rage-console",
-  "version": "0.1.3",
+  "version": "0.1.5",
   "description": "Единый логгер для RAGE MP server/client и CEF",
   "author": "xvantz",
   "license": "Elastic License 2.0",
@@ -41,7 +41,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/xvantz/rage-console.git"
+    "url": "git+https://github.com/xvantz/rage-console.git"
   },
   "keywords": [
     "rage-mp",

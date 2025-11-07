@@ -1,5 +1,15 @@
 import { ConsoleLogType, ConsolePlatform, MessageFormat } from "./types";
 
+const NATIVE_CONSOLE = (() => {
+	const c = globalThis.console;
+	return Object.freeze({
+		log:   c.log.bind(c),
+		info:  c.info.bind(c),
+		warn:  c.warn.bind(c),
+		error: c.error.bind(c),
+	});
+})();
+
 export class CustomConsole {
 	private static _sharedConsoleBrowser: BrowserMp | null = null;
 	private static _sharedView: boolean = false;
@@ -11,7 +21,6 @@ export class CustomConsole {
 		format: MessageFormat;
 	}> = [];
 	private static _instanceCount: number = 0;
-	private _nativeConsole: { log: Function, warn: Function, info: Function, error: Function} | null = null;
 
 	private readonly _platform: ConsolePlatform;
 	private readonly _prefix: string;
@@ -19,15 +28,6 @@ export class CustomConsole {
 
 	constructor(prefix: string = '', keyView?: number) {
 		this._platform = this.detectPlatform();
-		if (this._platform === ConsolePlatform.Local){
-			const nativeConsole = console;
-			this._nativeConsole = {
-				log: console.log.bind(nativeConsole),
-				warn: console.warn.bind(nativeConsole),
-				info: console.info.bind(nativeConsole),
-				error: console.error.bind(nativeConsole),
-			};
-		}
 		this._prefix = prefix;
 		CustomConsole._instanceCount++;
 
@@ -137,23 +137,23 @@ export class CustomConsole {
 				case ConsolePlatform.Local: {
 					switch (type) {
 						case ConsoleLogType.warn:
-							this._nativeConsole?.warn(prefixedMessage);
+							NATIVE_CONSOLE.warn(prefixedMessage);
 							break;
 						case ConsoleLogType.error:
-							this._nativeConsole?.error(prefixedMessage);
+							NATIVE_CONSOLE.error(prefixedMessage);
 							break;
 						case ConsoleLogType.info:
-							this._nativeConsole?.info(prefixedMessage);
+							NATIVE_CONSOLE.info(prefixedMessage);
 							break;
 						default:
-							this._nativeConsole?.log(prefixedMessage);
+							NATIVE_CONSOLE.log(prefixedMessage);
 					}
 					break;
 				}
 			}
 		} catch (error) {
-			this._nativeConsole?.error('CustomConsole platformCallConsole error:', error);
-			this._nativeConsole?.log(`[${this._prefix}]`, message);
+			NATIVE_CONSOLE.error('CustomConsole platformCallConsole error:', error);
+			NATIVE_CONSOLE.log(`[${this._prefix}]`, message);
 		}
 	}
 
