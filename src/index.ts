@@ -11,7 +11,7 @@ export class CustomConsole {
 		format: MessageFormat;
 	}> = [];
 	private static _instanceCount: number = 0;
-	private _nativeConsole: Console | null = null;
+	private _nativeConsole: { log: Function, warn: Function, info: Function, error: Function} | null = null;
 
 	private readonly _platform: ConsolePlatform;
 	private readonly _prefix: string;
@@ -19,7 +19,15 @@ export class CustomConsole {
 
 	constructor(prefix: string = '', keyView?: number) {
 		this._platform = this.detectPlatform();
-		if (this._platform === ConsolePlatform.Local) this._nativeConsole = console;
+		if (this._platform === ConsolePlatform.Local){
+			const nativeConsole = console;
+			this._nativeConsole = {
+				log: console.log.bind(nativeConsole),
+				warn: console.warn.bind(nativeConsole),
+				info: console.info.bind(nativeConsole),
+				error: console.error.bind(nativeConsole),
+			};
+		}
 		this._prefix = prefix;
 		CustomConsole._instanceCount++;
 
