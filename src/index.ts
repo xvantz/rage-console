@@ -144,8 +144,8 @@ export class CustomConsole {
 				}
 			}
 		} catch (error) {
-			console.error('CustomConsole platformCallConsole error:', error);
-			console.log(`[${this._prefix}]`, message);
+			this._nativeConsole?.error('CustomConsole platformCallConsole error:', error);
+			this._nativeConsole?.log(`[${this._prefix}]`, message);
 		}
 	}
 
